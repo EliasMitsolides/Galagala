@@ -25,8 +25,21 @@ public class EnemyLaser : MonoBehaviour
     {
         if (collidingWith.gameObject.tag == "Player")
         {
-            collidingWith.gameObject.SetActive(false);
-            Object.Destroy(this.gameObject);
+            if (Player.Instance.livesLeft == 1) 
+            {
+                
+                Player.Instance.DeathByEnemyCollision();
+                //collidingWith.gameObject.SetActive(false);
+                Object.Destroy(this.gameObject);
+            }
+            else if (Player.Instance.livesLeft > 1 )
+            {
+                
+                Player.Instance.DeathByEnemyCollision();
+                //collidingWith.gameObject.SetActive(false);
+                Object.Destroy(this.gameObject);
+            }
+            
         }
 
         if (collidingWith.gameObject.name == "Bottom")

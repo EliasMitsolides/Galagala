@@ -44,22 +44,22 @@ public class WaveSpawner : MonoBehaviour
     {
         Debug.Log("uwu");
         if (currentWave == 0 && !hasGameStarted && enemyCounter == 0)
-        {   //         Right Side Wave       GreenEnemyInitiate.position
-            GameObject green1 = Instantiate(GreenEnemy, new Vector3(10.7f, 17.5f, 0f), Quaternion.identity);
-            GameObject green2 = Instantiate(GreenEnemy, new Vector3(17.7f, 17.5f, 0f), Quaternion.identity);
-            GameObject green3 = Instantiate(GreenEnemy, new Vector3(24.7f, 17.5f, 0f), Quaternion.identity);
+        {   //         Right Side Wave       GreenEnemyInitiate.position 
+            GameObject green1 = Instantiate(GreenEnemy, new Vector3(10.7f, 20f, 0f), Quaternion.identity);
+            GameObject green2 = Instantiate(GreenEnemy, new Vector3(17.7f, 20f, 0f), Quaternion.identity);
+            GameObject green3 = Instantiate(GreenEnemy, new Vector3(24.7f, 20f, 0f), Quaternion.identity);
 
-            GameObject green4 = Instantiate(GreenEnemy, new Vector3(14.4f, 11f, 0f), Quaternion.identity);
-            GameObject green5 = Instantiate(GreenEnemy, new Vector3(21.4f, 11f, 0f), Quaternion.identity);
+            GameObject green4 = Instantiate(GreenEnemy, new Vector3(14.4f, 13.5f, 0f), Quaternion.identity);
+            GameObject green5 = Instantiate(GreenEnemy, new Vector3(21.4f, 13.5f, 0f), Quaternion.identity);
 
             //         Left Side Wave   ......  Spawn em 7 over to the right
-            GameObject green6 = Instantiate(GreenEnemy, new Vector3(-3.7f, 17.5f, 0f), Quaternion.identity);
-            GameObject green7 = Instantiate(GreenEnemy, new Vector3(-10.7f, 17.5f, 0f), Quaternion.identity);
-            GameObject green8 = Instantiate(GreenEnemy, new Vector3(-17.7f, 17.5f, 0f), Quaternion.identity);
+            GameObject green6 = Instantiate(GreenEnemy, new Vector3(-3.7f, 20f, 0f), Quaternion.identity);
+            GameObject green7 = Instantiate(GreenEnemy, new Vector3(-10.7f, 20f, 0f), Quaternion.identity);
+            GameObject green8 = Instantiate(GreenEnemy, new Vector3(-17.7f, 20f, 0f), Quaternion.identity);
 
-            GameObject green9 = Instantiate(GreenEnemy, new Vector3(-7.4f, 11f, 0f), Quaternion.identity);
-            GameObject green10 = Instantiate(GreenEnemy, new Vector3(-14.4f, 11f, 0f), Quaternion.identity);
-
+            GameObject green9 = Instantiate(GreenEnemy, new Vector3(-7.4f, 13.5f, 0f), Quaternion.identity);
+            GameObject green10 = Instantiate(GreenEnemy, new Vector3(-14.4f, 13.5f, 0f), Quaternion.identity);
+            //upper row y's were at 17.5...lower row y's were at 11
             green1.name = "Green Enemy";
             green2.name = "Green Enemy";
             green3.name = "Green Enemy";
@@ -94,17 +94,17 @@ public class WaveSpawner : MonoBehaviour
         {
 
 
-            GameObject green11 = Instantiate(GreenEnemy, new Vector3(10.7f, 17.5f, 0f), Quaternion.identity);
-            GameObject green12 = Instantiate(GreenEnemy, new Vector3(17.7f, 17.5f, 0f), Quaternion.identity);
-            GameObject green13 = Instantiate(GreenEnemy, new Vector3(24.7f, 17.5f, 0f), Quaternion.identity);
-            GameObject crawlie1 = Instantiate(CrawlieEnemy, new Vector3(33.6f, 2.5f, 0f), Quaternion.identity);
+            GameObject green11 = Instantiate(GreenEnemy, new Vector3(10.7f, 20f, 0f), Quaternion.identity);
+            GameObject green12 = Instantiate(GreenEnemy, new Vector3(17.7f, 20f, 0f), Quaternion.identity);
+            GameObject green13 = Instantiate(GreenEnemy, new Vector3(24.7f, 20f, 0f), Quaternion.identity);
+            GameObject crawlie1 = Instantiate(CrawlieEnemy, new Vector3(33.6f, 2.77f, 0f), Quaternion.identity);
 
 
-            GameObject green16 = Instantiate(GreenEnemy, new Vector3(-3.7f, 17.5f, 0f), Quaternion.identity);
-            GameObject green17 = Instantiate(GreenEnemy, new Vector3(-10.7f, 17.5f, 0f), Quaternion.identity);
-            GameObject green18 = Instantiate(GreenEnemy, new Vector3(-17.7f, 17.5f, 0f), Quaternion.identity);
-            GameObject crawlie2 = Instantiate(CrawlieEnemy, new Vector3(-33.6f, 2.5f, 0f), Quaternion.identity);
-
+            GameObject green16 = Instantiate(GreenEnemy, new Vector3(-3.7f, 20f, 0f), Quaternion.identity);
+            GameObject green17 = Instantiate(GreenEnemy, new Vector3(-10.7f, 20f, 0f), Quaternion.identity);
+            GameObject green18 = Instantiate(GreenEnemy, new Vector3(-17.7f, 20f, 0f), Quaternion.identity);
+            GameObject crawlie2 = Instantiate(CrawlieEnemy, new Vector3(-33.6f, 2.77f, 0f), Quaternion.identity);
+            //upper row y's were at 17.5...lower row y's were at 11.......crawlie y's were at 2.5
             green11.name = "Green Enemy";
             green12.name = "Green Enemy";
             green13.name = "Green Enemy";
