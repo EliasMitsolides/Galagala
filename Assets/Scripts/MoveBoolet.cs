@@ -25,6 +25,15 @@ public class MoveBoolet : MonoBehaviour
     {
         if (collidingWith.gameObject.name == "Green Enemy" || collidingWith.gameObject.name == "Crawlie Enemy") 
         {
+            if (collidingWith.gameObject.name == "Green Enemy")
+            {
+                Player.Instance.score += 120;
+            }
+            else
+            {
+                Player.Instance.score += 180;
+            }
+
             collidingWith.gameObject.SetActive(false);
             Object.Destroy(this.gameObject);
             WaveSpawner.Instance.enemyCounter -= 1;
@@ -32,9 +41,11 @@ public class MoveBoolet : MonoBehaviour
 
         if (collidingWith.gameObject.name == "Left Boss Enemy") 
         {
+            
             WaveSpawner.Instance.leftBossHealth -= 1;
             if (WaveSpawner.Instance.leftBossHealth == 0)
             {
+                Player.Instance.score += 1000;
                 collidingWith.gameObject.SetActive(false);
                 WaveSpawner.Instance.enemyCounter -= 1;
             }
@@ -46,6 +57,7 @@ public class MoveBoolet : MonoBehaviour
             WaveSpawner.Instance.rightBossHealth -= 1;
             if (WaveSpawner.Instance.rightBossHealth == 0)
             {
+                Player.Instance.score += 1000;
                 collidingWith.gameObject.SetActive(false);
                 WaveSpawner.Instance.enemyCounter -= 1;
             }

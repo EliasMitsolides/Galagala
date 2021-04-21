@@ -120,4 +120,27 @@ public class CrawlieMovement : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collidingWith)
+    {
+        if (collidingWith.gameObject.tag == "Player")
+        {
+            if (Player.Instance.livesLeft == 1)
+            {
+
+                Player.Instance.DeathByEnemyCollision();
+                //collidingWith.gameObject.SetActive(false);
+                
+            }
+            else if (Player.Instance.livesLeft > 1)
+            {
+
+                Player.Instance.DeathByEnemyCollision();
+                //collidingWith.gameObject.SetActive(false);
+                
+            }
+
+        }
+
+    }
+
 }

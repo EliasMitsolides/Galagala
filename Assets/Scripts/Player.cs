@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public int whichControlScheme = 0;
     public float playerMoveSpeed = 10.0f;
 
+    public int score;
+
     public Rigidbody2D player;
 
     public Material materialWhite;
