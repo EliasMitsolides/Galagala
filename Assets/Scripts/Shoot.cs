@@ -35,9 +35,11 @@ public class Shoot : MonoBehaviour
 
     public void ShootBoolet() 
     {
+        Player.Instance.pressingSomeUI = true;
         //currentTime += Time.deltaTime;
 
         //Input.GetButton("Fire1") && currentTime > nextFire
+
         if (currentTime > nextFire)
         {
             nextFire += currentTime;
@@ -50,6 +52,8 @@ public class Shoot : MonoBehaviour
 
     public void ShootSooperBoolet()
     {
+        Player.Instance.pressingSomeUI = true;
+
         if (sooperBooletsLeft == 1)
         {
             Instantiate(sooperProjectile, projectileSpawn.position, Quaternion.identity);

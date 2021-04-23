@@ -28,10 +28,12 @@ public class MoveBoolet : MonoBehaviour
             if (collidingWith.gameObject.name == "Green Enemy")
             {
                 Player.Instance.score += 120;
+                Player.Instance.scoreOnScreen.text = Player.Instance.score.ToString();
             }
             else
             {
                 Player.Instance.score += 180;
+                Player.Instance.scoreOnScreen.text = Player.Instance.score.ToString();
             }
 
             collidingWith.gameObject.SetActive(false);
@@ -46,6 +48,8 @@ public class MoveBoolet : MonoBehaviour
             if (WaveSpawner.Instance.leftBossHealth == 0)
             {
                 Player.Instance.score += 1000;
+                Player.Instance.scoreOnScreen.text = Player.Instance.score.ToString();
+
                 collidingWith.gameObject.SetActive(false);
                 WaveSpawner.Instance.enemyCounter -= 1;
             }
@@ -58,6 +62,8 @@ public class MoveBoolet : MonoBehaviour
             if (WaveSpawner.Instance.rightBossHealth == 0)
             {
                 Player.Instance.score += 1000;
+                Player.Instance.scoreOnScreen.text = Player.Instance.score.ToString();
+
                 collidingWith.gameObject.SetActive(false);
                 WaveSpawner.Instance.enemyCounter -= 1;
             }

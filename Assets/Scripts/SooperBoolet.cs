@@ -28,12 +28,22 @@ public class SooperBoolet : MonoBehaviour
         {
             Object.Destroy(collidingWith.gameObject);
         }
+        //determine which enemy was hit and adjust score accordingly, higher score because powerup was used
 
         if (collidingWith.gameObject.name == "Green Enemy" || collidingWith.gameObject.name == "Crawlie Enemy")
         {
             collidingWith.gameObject.SetActive(false);
-            //Object.Destroy(this.gameObject);
             WaveSpawner.Instance.enemyCounter -= 1;
+            if (collidingWith.gameObject.name == "Green Enemy")
+            {
+                Player.Instance.score += 200;
+                Player.Instance.scoreOnScreen.text = Player.Instance.score.ToString();
+            }
+            else // it was Crawlie Enemy
+            {
+                Player.Instance.score += 300;
+                Player.Instance.scoreOnScreen.text = Player.Instance.score.ToString();
+            }
         }
         if (collidingWith.gameObject.name == "Left Boss Enemy")
         {
@@ -42,6 +52,9 @@ public class SooperBoolet : MonoBehaviour
             {
                 collidingWith.gameObject.SetActive(false);
                 WaveSpawner.Instance.enemyCounter -= 1;
+
+                Player.Instance.score += 1666;
+                Player.Instance.scoreOnScreen.text = Player.Instance.score.ToString();
             }
             //Object.Destroy(this.gameObject);
         }
@@ -53,6 +66,9 @@ public class SooperBoolet : MonoBehaviour
             {
                 collidingWith.gameObject.SetActive(false);
                 WaveSpawner.Instance.enemyCounter -= 1;
+
+                Player.Instance.score += 1666;
+                Player.Instance.scoreOnScreen.text = Player.Instance.score.ToString();
             }
             //Object.Destroy(this.gameObject);
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class Player : MonoBehaviour
     public int chancesInOneCurrent = 2;
 
     public int livesLeft = 3;
+
     //touch side of screen to move is universal
     // diff is double tap to dash or "jerk" the phone to either side
     public int whichControlScheme = 0;
     public float playerMoveSpeed = 10.0f;
 
     public int score;
+    public Text scoreOnScreen;
 
     public Rigidbody2D player;
 
@@ -27,6 +30,16 @@ public class Player : MonoBehaviour
     // one life remaining is indicated by none of the tokens being visible on the lower left
     public GameObject TwoLifesLeftToken;
     public GameObject ThreeLifesLeftToken;
+
+
+    float touchInterval = 0.4f;
+    int scriptTouchCount = 0;
+    public bool doubleTapped = false;
+    public float DTapTime = 0.5f;
+    float newTime;
+
+    public bool pressingSomeUI = false;
+
 
     //this up until the end of Awake makes a public Instance of this so that when enemys kill us
     //...we can reduce our lives by one
@@ -52,6 +65,10 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score = int.Parse(scoreOnScreen.text.ToString());
+        Debug.Log(score);
+
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         materialWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         materialDefault = spriteRenderer.material;
@@ -64,24 +81,144 @@ public class Player : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
+
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0);
-
-            switch (touch.phase)
+            foreach (Touch touch in Input.touches)
             {
-                case TouchPhase.Began:
-                    if (touch.position.x<Screen.width / 2)
-                        player.velocity = new Vector2(-1f * playerMoveSpeed, 0f);
-                    if (touch.position.x > Screen.width / 2)
-                        player.velocity = new Vector2(playerMoveSpeed, 0f);
-                    break;
+                if (touch.tapCount == 2 && !pressingSomeUI)
+                {
+                    Touch thistouch = Input.GetTouch(0);
+                    switch (thistouch.phase)
+                    {
+                        case TouchPhase.Began:
+                            if (thistouch.position.x < Screen.width / 2)
+                                player.velocity = new Vector2(-1f * playerMoveSpeed * 6f, 0f);
+                            if (thistouch.position.x > Screen.width / 2)
+                                player.velocity = new Vector2(playerMoveSpeed * 6f, 0f);
+                            break;
 
-                case TouchPhase.Ended:
-                    player.velocity = new Vector2(0f, 0f);
-                    break;
+                        case TouchPhase.Ended:
+                            //doubleTapped = false;
+                            //scriptTouchCount = 0;
+
+                            player.velocity = new Vector2(0f, 0f);
+                            break;
+                    }
+                }
+
+                if (touch.tapCount == 1 && !pressingSomeUI)
+                {
+                    Touch thistouch = Input.GetTouch(0);
+                    switch (thistouch.phase)
+                    {
+                        case TouchPhase.Began:
+                            if (thistouch.position.x < Screen.width / 2)
+                                player.velocity = new Vector2(-1f * playerMoveSpeed, 0f);
+                            if (thistouch.position.x > Screen.width / 2)
+                                player.velocity = new Vector2(playerMoveSpeed, 0f);
+                            break;
+
+                        case TouchPhase.Ended:
+                            player.velocity = new Vector2(0f, 0f);
+                            break;
+                    }
+                }
             }
+
+            
+
         }
+
+        //if (Input.touchCount > 0)
+        //{
+
+        //    if (scriptTouchCount == 1 && (touchInterval > 0) && !pressingSomeUI)
+        //    {
+        //        //we just double tapped, see if two taps were on same side
+        //        doubleTapped = true;
+        //    }
+        //    else
+        //    {
+        //        touchInterval = 0.4f;
+        //        scriptTouchCount += 1;
+        //        //should implicitly be the case but hey
+        //    }
+
+        //    if( touchInterval > 0)
+        //    {
+        //        touchInterval -= 1 * Time.deltaTime;
+        //    }
+        //    else
+        //    {
+        //        //doubleTapped = false;
+        //        //was just one press...do this
+        //        scriptTouchCount = 0;
+
+                
+        //    }
+
+        //    if (doubleTapped && !pressingSomeUI)
+        //    {
+        //        Touch touch = Input.GetTouch(0);
+        //        switch (touch.phase)
+        //        {
+        //            case TouchPhase.Began:
+        //                if (touch.position.x < Screen.width / 2)
+        //                    player.velocity = new Vector2(-1f * playerMoveSpeed * 6f, 0f);
+        //                if (touch.position.x > Screen.width / 2)
+        //                    player.velocity = new Vector2(playerMoveSpeed * 6f, 0f);
+        //                break;
+
+        //            case TouchPhase.Ended:
+        //                doubleTapped = false;
+        //                scriptTouchCount = 0;
+
+        //                player.velocity = new Vector2(0f, 0f);
+        //                break;
+        //        }
+        //    }
+        //    else if (!pressingSomeUI)
+        //    {
+        //        Touch touch = Input.GetTouch(0);
+        //        switch (touch.phase)
+        //        {
+        //            case TouchPhase.Began:
+        //                if (touch.position.x < Screen.width / 2)
+        //                    player.velocity = new Vector2(-1f * playerMoveSpeed, 0f);
+        //                if (touch.position.x > Screen.width / 2)
+        //                    player.velocity = new Vector2(playerMoveSpeed, 0f);
+        //                break;
+
+        //            case TouchPhase.Ended:
+        //                player.velocity = new Vector2(0f, 0f);
+        //                break;
+        //        }
+        //    }
+        //}
+
+
+
+        //    Touch touch = Input.GetTouch(0);
+
+        //    switch (touch.phase)
+        //    {
+        //        case TouchPhase.Began:
+        //            if (touch.position.x<Screen.width / 2)
+        //                player.velocity = new Vector2(-1f * playerMoveSpeed, 0f);
+        //            if (touch.position.x > Screen.width / 2)
+        //                player.velocity = new Vector2(playerMoveSpeed, 0f);
+        //            break;
+
+        //        case TouchPhase.Ended:
+        //            player.velocity = new Vector2(0f, 0f);
+        //            break;
+        //    }
+        //}
+
+        //float touchInterval = 0.4f;
+        //int touchCount = 0;
+        
     }
 
     void FixedUpdate()
@@ -125,10 +262,18 @@ public class Player : MonoBehaviour
         if (livesLeft == 1 && (greenPowerUpActivated == false || 
             (greenPowerUpActivated == true && chancesInOneCurrent == 1)))
         {
+            //we deeeeeaaaaaaaaaad
+
             livesLeft = 0;
             GameObject explosion = (GameObject)Instantiate(explosionReference);
             explosion.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             this.gameObject.SetActive(false);
+
+            PlayerPrefs.SetString("PlayerScore", score.ToString() );
+
+            PauseMenu.Instance.GameOver();
+            
+            
         }
         else
         {
@@ -187,6 +332,7 @@ public class Player : MonoBehaviour
 
     public void UpSpeedBluePower()
     {
+        pressingSomeUI = true;
         if (playerMoveSpeed == 10.0f) { 
             playerMoveSpeed = 20.0f;
         }
@@ -194,10 +340,16 @@ public class Player : MonoBehaviour
 
     public void LifeImproveGreenPower()
     {
+        pressingSomeUI = true;
         if (greenPowerUpActivated == false) 
         {
             greenPowerUpActivated = true;
         }
         
+    }
+
+    public void noLongerPressingUI()
+    {
+        pressingSomeUI = false;
     }
 }

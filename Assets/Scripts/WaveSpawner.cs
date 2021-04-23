@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
+    bool poppedUpVictoryScreen = false;
     bool hasGameStarted = false;
     public int currentWave = 0;
     public int enemyCounter = 0;
+
+    public GameObject gameContent;
 
     //public Transform GreenEnemyInitiate;
     public GameObject GreenEnemy;
@@ -59,6 +62,19 @@ public class WaveSpawner : MonoBehaviour
 
             GameObject green9 = Instantiate(GreenEnemy, new Vector3(-7.4f, 13.5f, 0f), Quaternion.identity);
             GameObject green10 = Instantiate(GreenEnemy, new Vector3(-14.4f, 13.5f, 0f), Quaternion.identity);
+
+            green1.transform.parent = gameContent.transform;
+            green2.transform.parent = gameContent.transform;
+            green3.transform.parent = gameContent.transform;
+            green4.transform.parent = gameContent.transform;
+            green5.transform.parent = gameContent.transform;
+            green6.transform.parent = gameContent.transform;
+            green7.transform.parent = gameContent.transform;
+            green8.transform.parent = gameContent.transform;
+            green9.transform.parent = gameContent.transform;
+            green10.transform.parent = gameContent.transform;
+            
+
             //upper row y's were at 17.5...lower row y's were at 11
             green1.name = "Green Enemy";
             green2.name = "Green Enemy";
@@ -105,6 +121,18 @@ public class WaveSpawner : MonoBehaviour
             GameObject green18 = Instantiate(GreenEnemy, new Vector3(-17.7f, 20f, 0f), Quaternion.identity);
             GameObject crawlie2 = Instantiate(CrawlieEnemy, new Vector3(-33.6f, 2.77f, 0f), Quaternion.identity);
             //upper row y's were at 17.5...lower row y's were at 11.......crawlie y's were at 2.5
+
+            green11.transform.parent = gameContent.transform;
+            green12.transform.parent = gameContent.transform;
+            green13.transform.parent = gameContent.transform;
+            crawlie1.transform.parent = gameContent.transform;
+
+            green16.transform.parent = gameContent.transform;
+            green17.transform.parent = gameContent.transform;
+            green18.transform.parent = gameContent.transform;
+            crawlie2.transform.parent = gameContent.transform;
+
+
             green11.name = "Green Enemy";
             green12.name = "Green Enemy";
             green13.name = "Green Enemy";
@@ -127,8 +155,17 @@ public class WaveSpawner : MonoBehaviour
             GameObject boss2 = Instantiate(BossEnemy, new Vector3(30f, 22.18f, 0f), Quaternion.identity);
             boss2.name = "Right Boss Enemy";
 
+            boss1.transform.parent = gameContent.transform;
+            boss2.transform.parent = gameContent.transform;
+
+
             currentWave = 3;
             enemyCounter = 2;
+        }
+        else if (currentWave == 3 && enemyCounter == 0 && !poppedUpVictoryScreen)
+        {
+            poppedUpVictoryScreen = true;
+            PauseMenu.Instance.GameWon();
         }
     }
 }
