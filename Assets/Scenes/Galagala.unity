@@ -1855,6 +1855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpawn: {fileID: 0}
+  sooperProjectileSpawn: {fileID: 0}
   projectile: {fileID: 7111234567372879168, guid: 38b06e4a10bb02943a7aebfe81608d4a,
     type: 3}
   sooperProjectile: {fileID: 7964561148259324959, guid: 39e5dc35bcb4baa4c8b87c63344f7e28,
@@ -6830,7 +6831,7 @@ PrefabInstance:
     - target: {fileID: 8249750947336339085, guid: 39e5dc35bcb4baa4c8b87c63344f7e28,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -98.159294
+      value: -111.1589
       objectReference: {fileID: 0}
     - target: {fileID: 8249750947336339085, guid: 39e5dc35bcb4baa4c8b87c63344f7e28,
         type: 3}

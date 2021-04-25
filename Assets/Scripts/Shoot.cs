@@ -6,6 +6,7 @@ public class Shoot : MonoBehaviour
 {
 
     public Transform projectileSpawn;
+    //public Transform sooperProjectileSpawn;
 
     public GameObject projectile;
     public GameObject sooperProjectile;
@@ -15,10 +16,35 @@ public class Shoot : MonoBehaviour
 
     public int sooperBooletsLeft = 1;
 
+    Vector3 sooperSpawn;
+
+
+
+    public static Shoot _instance = null;
+    public static Shoot Instance
+    {
+        get { return _instance; }
+    }
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            _instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(this);
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
         projectileSpawn = this.gameObject.transform;
+        sooperSpawn = new Vector3(this.transform.position.x, this.transform.position.y + 12f);
+        //sooperProjectileSpawn = this.gameObject.transform;
+        //sooperProjectileSpawn.position = sooperSpawn;
     }
 
     // Update is called once per frame
@@ -56,9 +82,14 @@ public class Shoot : MonoBehaviour
 
         if (sooperBooletsLeft == 1)
         {
-            Instantiate(sooperProjectile, projectileSpawn.position, Quaternion.identity);
+            Instantiate(sooperProjectile, sooperSpawn, Quaternion.identity);
             sooperBooletsLeft = 0;
         }
         
+    }
+
+    public void RestartSooperBooletCount()
+    {
+        sooperBooletsLeft = 1;
     }
 }

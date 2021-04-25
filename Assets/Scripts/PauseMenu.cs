@@ -94,6 +94,11 @@ public class PauseMenu : MonoBehaviour
         //I gotta get the game to restart...I'll figure that out
         gameLossUI.SetActive(false);
         gameWonUI.SetActive(false);
+
+        Player.Instance.RestartGame();
+        Shoot.Instance.RestartSooperBooletCount();
+        WaveSpawner.Instance.RestartEnemies();
+
         Time.timeScale = 1f;
         gameIsPaused = false;
     }

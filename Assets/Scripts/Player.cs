@@ -32,8 +32,8 @@ public class Player : MonoBehaviour
     public GameObject ThreeLifesLeftToken;
 
 
-    float touchInterval = 0.4f;
-    int scriptTouchCount = 0;
+    //float touchInterval = 0.4f;
+    //int scriptTouchCount = 0;
     public bool doubleTapped = false;
     public float DTapTime = 0.5f;
     float newTime;
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         score = int.Parse(scoreOnScreen.text.ToString());
-        Debug.Log(score);
+        //Debug.Log(score);
 
 
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -351,5 +351,31 @@ public class Player : MonoBehaviour
     public void noLongerPressingUI()
     {
         pressingSomeUI = false;
+    }
+
+    public void RestartGame()
+    {
+        greenPowerUpActivated = false;
+        chancesFromGreenPowerUp = 2;
+        chancesInOneCurrent = 2;
+
+        livesLeft = 3;
+
+        //touch side of screen to move is universal
+        // diff is double tap to dash or "jerk" the phone to either side...didn't get to impl this
+        whichControlScheme = 0;
+        playerMoveSpeed = 10.0f;
+        score = 0;
+        scoreOnScreen.text = score.ToString();
+
+        TwoLifesLeftToken.SetActive(true);
+        ThreeLifesLeftToken.SetActive(true);
+       
+
+        
+
+        this.transform.position = new Vector3(0f, -3.5f);
+        this.gameObject.SetActive(true);
+       
     }
 }
