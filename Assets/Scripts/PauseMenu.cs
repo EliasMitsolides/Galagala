@@ -91,7 +91,6 @@ public class PauseMenu : MonoBehaviour
 
     public void GameRedo()
     {
-        //I gotta get the game to restart...I'll figure that out
         gameLossUI.SetActive(false);
         gameWonUI.SetActive(false);
 

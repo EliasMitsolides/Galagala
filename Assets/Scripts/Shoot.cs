@@ -68,6 +68,7 @@ public class Shoot : MonoBehaviour
 
         if (currentTime > nextFire)
         {
+            
             nextFire += currentTime;
             Instantiate(projectile, projectileSpawn.position, Quaternion.identity);
             nextFire -= currentTime;

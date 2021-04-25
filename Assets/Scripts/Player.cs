@@ -360,6 +360,8 @@ public class Player : MonoBehaviour
         chancesInOneCurrent = 2;
 
         livesLeft = 3;
+        TwoLifesLeftToken.SetActive(true);
+        ThreeLifesLeftToken.SetActive(true);
 
         //touch side of screen to move is universal
         // diff is double tap to dash or "jerk" the phone to either side...didn't get to impl this
@@ -368,8 +370,7 @@ public class Player : MonoBehaviour
         score = 0;
         scoreOnScreen.text = score.ToString();
 
-        TwoLifesLeftToken.SetActive(true);
-        ThreeLifesLeftToken.SetActive(true);
+        
        
 
         
