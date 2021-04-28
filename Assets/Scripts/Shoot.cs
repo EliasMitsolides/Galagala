@@ -50,7 +50,7 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        sooperSpawn = new Vector3(this.transform.position.x, this.transform.position.y + 12f);
         //uncomment this to be able to fire by left mouse button clicking
         //ShootBoolet();
 

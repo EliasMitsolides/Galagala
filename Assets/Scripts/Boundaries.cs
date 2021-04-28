@@ -12,6 +12,7 @@ public class Boundaries : MonoBehaviour
     public float screenSizeHeight;
 
     public Vector3 ourThing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,14 @@ public class Boundaries : MonoBehaviour
     void LateUpdate()
     {
         ourThing = transform.position;
+
+        float distance = transform.position.z - Camera.main.transform.position.z;
+
+        float leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, distance)).x + objectWidth;
+        float rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, distance)).x - objectWidth;
+
+        ourThing.x = Mathf.Clamp(ourThing.x, leftBorder, rightBorder);
+        transform.position = ourThing;
         //Debug.Log(ourThing.x);
         //Vector3 clampedPOS = transform.position;
         //Debug.Log(screenBounds.x);
