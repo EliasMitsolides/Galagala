@@ -93,9 +93,9 @@ public class Player : MonoBehaviour
                     {
                         case TouchPhase.Began:
                             if (thistouch.position.x < Screen.width / 2)
-                                player.velocity = new Vector2(-1f * playerMoveSpeed * 6f, 0f);
+                                player.velocity = new Vector2(-1f * playerMoveSpeed * 1.5f, 0f);
                             if (thistouch.position.x > Screen.width / 2)
-                                player.velocity = new Vector2(playerMoveSpeed * 6f, 0f);
+                                player.velocity = new Vector2(playerMoveSpeed * 1.5f, 0f);
                             break;
 
                         case TouchPhase.Ended:
